@@ -58,12 +58,19 @@
     </div>
     <script>
         // Reset the preview when the page is refreshed
-        window.onload = function() {
-            const previewContent = document.querySelector('.preview-content','.file-upload-feedback');
+        window.onload = function () {
+            const previewContent = document.querySelector('.preview-content');
+            const fileFeedback = document.querySelector('.file-upload-feedback');
+        
             if (previewContent) {
                 previewContent.innerHTML = ''; // Clears the preview content
             }
+        
+            if (fileFeedback) {
+                fileFeedback.innerHTML = ''; // Clears file upload feedback
+            }
         };
+        
     </script>
 </body>
 </html>
