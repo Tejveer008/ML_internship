@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Contract Review</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>📄 AI-Based Contract Review</h2>
+
+        <!-- Error Message -->
+        {% if error %}
+            <div class="error-message">
+                ⚠️ {{ error }}
+            </div>
+        {% endif %}
+
+        <!-- File Upload Feedback -->
+        {% if filename %}
+            <div class="file-upload-feedback">
+                📎 File uploaded: <strong>{{ filename }}</strong>
+            </div>
+        {% endif %}
+
+        <!-- Text Preview -->
+        {% if preview %}
+            <div class="text-preview">
+                <label class="preview-label">🔍 Text Preview:</label>
+                <div class="preview-content">
+                    {{ preview }}
+                    {% if preview|length >= 500 %}...{% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Form for File Upload and Contract Text -->
+        <form method="POST" action="/analyze" enctype="multipart/form-data">
+            <label for="contract_file">📎 Upload Contract (PDF):</label>
+            <input type="file" name="contract_file" accept=".pdf,.doc,.docx,.txt,.json,.csv">
+
+            <label for="contract">📝 Or paste contract text below:</label>
+            <textarea name="contract" rows="12" placeholder="Paste your contract here..."></textarea>
+
+            <button type="submit">🔍 Analyze Contract</button>
+        </form>
+
+        <!-- Results Section -->
+        {% if result %}
+        <div class="result">
+            <h3>✅ Results:</h3>
+            <p><strong>Found Clauses:</strong> {{ result.found_clauses | join(', ') }}</p>
+            <p><strong>Risky Terms:</strong> {{ result.flagged_terms | join(', ') }}</p>
+            <p><strong>Suggestions:</strong> {{ result.suggestions | join('; ') }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <script>
+        // Reset the preview when the page is refreshed
+        window.onload = function() {
+            const previewContent = document.querySelector('.preview-content');
+            if (previewContent) {
+                previewContent.innerHTML = ''; // Clears the preview content
+            }
+        };
+    </script>
+</body>
+</html>
