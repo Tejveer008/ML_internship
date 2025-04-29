@@ -2,3 +2,5 @@ Flask
 spacy
 gunicorn
 PyMuPDF
+python-docx
+pdfminer.six

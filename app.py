@@ -6,7 +6,7 @@ import json
 import csv
 
 app = Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB max upload
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB max upload
 
 ALLOWED_EXTENSIONS = {'pdf', 'docx', 'txt', 'json', 'csv'}
 
