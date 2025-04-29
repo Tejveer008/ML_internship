@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template
-from gunicorn import fcntl , util
 from review_engine import analyze_contract
 from pdf_utils import extract_text_from_pdf
 import docx
