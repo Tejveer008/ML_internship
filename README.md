@@ -1,4 +1,5 @@
 # 🧠 AI-Based Contract Review System
+![Screeshort](static/Screenshot 2025-04-29 150420.jpg)
 
 A web-based legal contract analyzer using NLP (spaCy). Upload a PDF or paste a contract — the app will extract clauses, detect risky terms, and give feedback.
 
